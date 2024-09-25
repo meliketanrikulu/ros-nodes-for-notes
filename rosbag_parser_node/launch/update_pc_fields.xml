@@ -1,0 +1,6 @@
+<launch>
+    <arg name="param_file" default="$(find-pkg-share pose_visualizer)/config/pose_visualizer.param.yaml"/>
+    <node pkg="pose_visualizer" exec="pose_visualizer" name="pose_visualizer" output="screen">
+    <param from="$(var param_file)"/>
+    </node>
+</launch>
