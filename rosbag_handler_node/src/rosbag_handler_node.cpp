@@ -206,28 +206,8 @@ void RosbagHandler::handle_imu(const std::shared_ptr<sensor_msgs::msg::Imu> &msg
   RCLCPP_INFO(this->get_logger(), "Imu message received: [%.2f, %.2f, %.2f]",
               msg->linear_acceleration.x, msg->linear_acceleration.y, msg->linear_acceleration.z);
 
-  auto imu_ = std::make_shared<sensor_msgs::msg::Imu>();
-
-  imu_->header = msg->header;
-  imu_->linear_acceleration_covariance = msg->linear_acceleration_covariance;
-  imu_->angular_velocity_covariance = msg->angular_velocity_covariance;
-  imu_->orientation_covariance = msg->orientation_covariance;
-
-  imu_->orientation.x = msg->orientation.x;
-  imu_->orientation.y = msg->orientation.y;
-  imu_->orientation.z = msg->orientation.z;
-  imu_->orientation.w = msg->orientation.w;
-
-  imu_->linear_acceleration.x = msg->linear_acceleration.x;
-  imu_->linear_acceleration.y = -msg->linear_acceleration.y;
-  imu_->linear_acceleration.z = -msg->linear_acceleration.z;
-
-  imu_->angular_velocity.x = msg->angular_velocity.x;
-  imu_->angular_velocity.y = -msg->angular_velocity.y;
-  imu_->angular_velocity.z = -msg->angular_velocity.z;
-
   // Serialize and write the message to the output bag
-  serialize_and_write_message("/applanix/lvx_client/imu_raw", imu_, timestamp);
+  serialize_and_write_message("/applanix/lvx_client/imu_raw", msg, timestamp);
 }
 
 void RosbagHandler::handle_autoware_orientation(const std::shared_ptr<autoware_sensing_msgs::msg::GnssInsOrientationStamped> &msg, const rclcpp::Time &timestamp)
