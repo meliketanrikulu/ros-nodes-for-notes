@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="rosbag_parser_node" exec="rosbag_parser_node" name="rosbag_parser_node" output="screen"/>
+</launch>
