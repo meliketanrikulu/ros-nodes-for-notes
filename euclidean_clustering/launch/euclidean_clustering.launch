@@ -1,0 +1,16 @@
+<launch>
+
+    <node pkg="euclidean_clustering" type="euclidean_clustering_node" name="euclidean_clustering_node" output="screen">
+
+        <param name="z_min" value="0.0"/>
+        <param name="z_max" value="1.5"/>
+        <param name="y_min" value="-0.7"/>
+        <param name="y_max" value="0.7"/>
+        <param name="downsample_leaf_size" value="0.1"/>
+        <param name="cluster_tolerance" value="0.2"/>
+        <param name="min_cluster_size" value="50"/>
+        <param name="max_cluster_size" value="10000"/>
+
+    </node>
+
+</launch>
